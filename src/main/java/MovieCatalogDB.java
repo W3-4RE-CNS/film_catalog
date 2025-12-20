@@ -36,7 +36,23 @@ public class MovieCatalogDB {
     private static final String DB_URL = "jdbc:sqlite:movies.db";
     private static Scanner scanner = new Scanner(System.in);
 
+    // Статический блок для загрузки драйвера при загрузке класса
+    static {
+        loadDatabaseDriver();
+    }
+
+    private static void loadDatabaseDriver() {
+        try {
+            Class.forName("org.sqlite.JDBC");
+        } catch (ClassNotFoundException e) {
+            System.err.println("Не удалось загрузить драйвер SQLite: " + e.getMessage());
+            System.err.println("Убедитесь, что sqlite-jdbc.jar добавлен в classpath.");
+            System.exit(1);
+        }
+    }
+
     public static void main(String[] args) {
+        System.out.println("Запуск каталога фильмов...");
         initializeDatabase();
         populateDatabaseIfEmpty();
 
@@ -58,6 +74,7 @@ public class MovieCatalogDB {
                     break;
                 case 0:
                     System.out.println("Выход из программы.");
+                    scanner.close();
                     return;
                 default:
                     System.out.println("Неверный выбор. Попробуйте снова.");
