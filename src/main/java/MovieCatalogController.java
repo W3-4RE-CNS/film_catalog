@@ -276,6 +276,4 @@ public class MovieCatalogController {
         alert.showAndWait();
     }
 
-    // Временный метод для доступа к соединению (добавьте в DatabaseManager геттер для Connection)
-    // В DatabaseManager добавьте: public Connection getConnection() throws SQLException { ... }
 }
