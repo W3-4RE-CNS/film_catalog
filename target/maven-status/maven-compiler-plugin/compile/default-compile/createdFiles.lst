@@ -1,2 +1,5 @@
-MovieCatalogDB.class
 Movie.class
+Main.class
+MovieCatalogController.class
+DatabaseManager.class
+MovieCatalogUI.class
